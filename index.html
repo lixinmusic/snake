@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>蛇</title>
+	<style>
+*{
+	margin:0;
+	padding: 0;
+	list-style: none;
+}
+	
+.changjin.huilai{
+	  transition:all 0.8s ease;
+      transform:translateX(0);
+      opacity: 1;
+}	
+.changjin{
+	transform:translateX(-20000px);
+	width: 600px;
+	height: 600px;
+	border:1px solid black;
+	position: fixed;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	margin:auto;
+	opacity: 0;
+	overflow: hidden;
+}
+.changjin .block{
+	width: 30px;
+	height: 30px;
+	float:left;
+	bo rder:1px solid #ccc;
+	background:url(img/cc.jpg);
+	background-size:cover;
+}
+.changjin .she{
+	background-image:url(img/aa.jpg) ;
+	background-size:cover;
+}
+.changjin .shiwu{
+	background-image:url(img/bb.gif);
+	background-size:cover;
+}
+img{
+	width: 1349px;
+	height: 100%;
+	position: fixed;
+	top:0;
+	left:0;
+	right: 0;
+	bottom:0;
+    overflow: hidden; 
+}
+
+
+
+@keyframes diao{
+	0%{
+         transform:translateY(-1000px);
+	}
+	100%{
+		  transform:translateY(0px);
+	}
+}
+
+.paizi{
+	width: 600px;
+	height: 100px;
+	margin:auto;
+	/* background:rgba(235,88,159,0.4); */
+	background: red;
+	text-align: center;
+	position: absolute;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	z-index: 50;
+	/* transform:translateY(-1000px); */
+	
+}
+.diao{
+animation:diao 0.3s ease forwards;
+}
+
+@keyframes huiqu{
+	0%{
+         transform:translateY(0px);
+	}
+	100%{
+		  transform:translateY(-1000px);
+	}
+}
+
+.huiqu{
+	animation:huiqu 0.3s ease forwards;
+
+}
+.paizi span{
+	cursor:pointer;
+	display: inline-block;
+	padding: 10px 30px;
+	color:#fff;
+	font-size: 30px;
+	background: pink;
+	margin-top: 20px
+
+
+
+}
+
+audio{
+	display: none;
+
+}
+
+
+	</style>
+</head>
+<body>
+<audio id="audio" src="萨克斯 - 回家.mp3" controls autoplay></audio>
+
+	<div class="paizi diao">
+		<span>开始游戏</span>
+	</div>
+	<img src="fsf.gif" alt="">
+	<div class="changjin"></div>
+	
+</body>
+<script src="js/jquery1.12.3.js"></script>
+<script src="js/index.js"></script>
+</html>
