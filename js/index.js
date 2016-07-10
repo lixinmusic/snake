@@ -62,30 +62,50 @@ $('.changjin').addClass('huilai');
                 x: jiutou.x,
                 y: jiutou.y + 1
             };
+            if(xintou.y>19){
+              $('<div>').addClass('out').appendTo('.changjin');
+              zanting();
+              return
+            }
         }
         if (fangxiang === 'zuo') {
             var xintou = {
                 x: jiutou.x,
                 y: jiutou.y - 1
             };
+             if(xintou.y<0){
+              $('<div>').addClass('out').appendTo('.changjin');
+              zanting();
+              return
+            }
         }
         if (fangxiang === 'xia') {
             var xintou = {
                 x: jiutou.x + 1,
                 y: jiutou.y
             };
+             if(xintou.x>19){
+              $('<div>').addClass('out').appendTo('.changjin');
+              zanting();
+              return
+            }
         }
         if (fangxiang === 'shang') {
             var xintou = {
                 x: jiutou.x - 1,
                 y: jiutou.y
             };
+             if(xintou.x<0){
+              $('<div>').addClass('out').appendTo('.changjin');
+              zanting();
+              return
+            }
         }
            
-        if(xintou.y>19||xintou.y<0||xintou.x<0||xintou.x>19){
+      /*  if(xintou.y>19||xintou.y<0||xintou.x<0||xintou.x>19){
                       zanting()
                       return
-        }
+        }*/
 
 
         she.push(xintou);
