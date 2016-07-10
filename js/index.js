@@ -39,6 +39,11 @@ $('.changjin').addClass('huilai');
     }, 
     
     ];
+    var diia={
+      '0-0':true,
+      '0-1':true,
+      '0-2':true
+    }
     for (var i = 0; i < she.length; i++) {
         $('#' + she[i].x + '-' + she[i].y).addClass('she');
     }
@@ -102,6 +107,12 @@ $('.changjin').addClass('huilai');
             }
         }
            
+            if(diia[xintou.x+'-'+xintou.y]){
+               $('<div>').addClass('out').appendTo('.changjin');
+                       console.log('撞自己');
+                zanting();
+                return
+          } 
       /*  if(xintou.y>19||xintou.y<0||xintou.x<0||xintou.x>19){
                       zanting()
                       return
@@ -109,6 +120,7 @@ $('.changjin').addClass('huilai');
 
 
         she.push(xintou);
+        diia[xintou.x+'-'+xintou.y]=true;
         $('#' + xintou.x + '-' + xintou.y).addClass('she');
         
         if (xintou.x === shiwu.x && xintou.y === shiwu.y) {
@@ -116,14 +128,34 @@ $('.changjin').addClass('huilai');
             shiwu = fangshiwu();
         } else {
             var weiba = she.shift();
+             delete diia[weiba.x+'-'+weiba.y];
             $('#' + weiba.x + '-' + weiba.y).removeClass('she');
         }
     
     
     }
-    var t=setInterval(move, 300);
+     var kaishi=function(){
+             /* clearInterval(t)*/
+             t=setInterval(move,300);
+        }
+        var zanting=function(){
+             clearInterval(t);
+        }
+
+   /* var t=setInterval(move, 300);*/
     
     $(document).on('keyup', function(e) {
+               e.precentDefault;
+      var biao={
+        'zuo':37,
+        'you':39,
+        'shang':38,
+        'xia':40
+      }
+      if(Math.abs(e.keyCode-biao[fangxiang])===2){
+        return
+      }
+
         if (e.keyCode === 37) {
             fangxiang = 'zuo';
         }
@@ -142,13 +174,7 @@ $('.changjin').addClass('huilai');
     });
 
 //开始和暂停
-        var kaishi=function(){
-              clearInterval(t)
-             t=setInterval(move,300);
-        }
-        var zanting=function(){
-             clearInterval(t);
-        }
+       
         $(document).on('click',function(){
           kaishi()
         })
